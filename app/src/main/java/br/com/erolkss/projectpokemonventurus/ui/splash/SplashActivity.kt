@@ -10,9 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.toColorInt
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import br.com.erolkss.projectpokemonventurus.MainActivity
 import br.com.erolkss.projectpokemonventurus.R
 import br.com.erolkss.projectpokemonventurus.databinding.ActivitySplashBinding
+import br.com.erolkss.projectpokemonventurus.ui.main.MainActivity
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashBinding
