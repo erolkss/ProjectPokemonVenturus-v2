@@ -29,7 +29,7 @@
             android:layout_marginStart="16dp"
             android:text="Pokemon Name"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/imagePokemon"
             app:layout_constraintStart_toEndOf="@id/imagePokemon"
