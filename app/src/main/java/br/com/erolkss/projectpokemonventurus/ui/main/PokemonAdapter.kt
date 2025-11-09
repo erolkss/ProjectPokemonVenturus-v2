@@ -10,10 +10,19 @@ import com.bumptech.glide.Glide
 
 class PokemonAdapter : RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
     private val list = mutableListOf<Result>()
+    var onItemClick: ((Result) -> Unit)? = null
 
     inner class ViewHolder(val binding: ItemPokemonBinding) :
-        RecyclerView.ViewHolder(binding.root)
-
+        RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.root.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    onItemClick?.invoke(list[position])
+                }
+            }
+        }
+    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,

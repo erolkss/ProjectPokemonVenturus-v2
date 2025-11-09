@@ -1,5 +1,6 @@
 package br.com.erolkss.projectpokemonventurus.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.SearchView
 import androidx.activity.enableEdgeToEdge
@@ -12,6 +13,7 @@ import br.com.erolkss.projectpokemonventurus.R
 import br.com.erolkss.projectpokemonventurus.data.api.ApiClient
 import br.com.erolkss.projectpokemonventurus.data.model.Result
 import br.com.erolkss.projectpokemonventurus.databinding.ActivityMainBinding
+import br.com.erolkss.projectpokemonventurus.ui.detail.DetailPokemonActivity
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -30,6 +32,12 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = adapter
 
+        adapter.onItemClick = { pokemon ->
+            val intent = Intent(this, DetailPokemonActivity::class.java)
+            intent.putExtra("pokemon_name", pokemon.name)
+            startActivity(intent)
+        }
+
         fetchPokemonList()
         setupSearchView()
 
@@ -42,9 +50,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun fetchPokemonList() {
         lifecycleScope.launch {
-                val response = ApiClient.instance.getPokemonList()
-                allPokemonList = response.results
-                adapter.submitList(allPokemonList)
+            val response = ApiClient.instance.getPokemonList()
+            allPokemonList = response.results
+            adapter.submitList(allPokemonList)
         }
     }
 
