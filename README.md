@@ -63,3 +63,11 @@ Documentação oficial: [PokeAPI v2](https://pokeapi.co/docs/v2)
 1. Clone este repositório:
 ```bash
 git clone https://github.com/erolkss/ProjectPokemonVenturus.git
+
+```
+## 🚀 2º Versão
+Essa versão será atualizada após a data de entrega do projeto final (09/11 - 23:59)
+
+Documentação oficial: [ProjectPokemonVenturus v2](https://github.com/erolkss/ProjectPokemonVenturus-v2)
+
+
