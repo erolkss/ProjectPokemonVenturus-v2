@@ -45,7 +45,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
                         android:layout_weight="1"
-                        android:text="Voltar"
+                        android:text="@string/button_back"
                         android:textSize="18sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -72,20 +72,19 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:paddingBottom="8dp"
-                android:background="@drawable/white_bg"
-                android:text="Nome Pokémon"
+                android:background="@drawable/background_white"
+                android:text="@string/label_name"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="38sp"
                 android:textStyle="bold" />
 
-            <!-- Seção de Detalhes -->
             <LinearLayout
                 android:id="@+id/detailsLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:background="@drawable/white_bg"
+                android:background="@drawable/background_white"
                 android:orientation="vertical"
                 android:padding="16dp">
 
@@ -93,7 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="8dp"
-                    android:text="Detalhes"
+                    android:text="@string/title_details"
                     android:textAlignment="viewStart"
                     android:textColor="@color/black"
                     android:textSize="24sp"
@@ -108,7 +107,7 @@
                         android:id="@+id/idTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Id: "
+                        android:text="@string/label_id"
                         android:textColor="@color/black"
                         android:textSize="20sp"/>
 
@@ -116,7 +115,7 @@
                         android:id="@+id/heightTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Altura: "
+                        android:text="@string/label_height"
                         android:textColor="@color/black"
                         android:textSize="20sp"/>
 
@@ -124,7 +123,7 @@
                         android:id="@+id/weightTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Peso: "
+                        android:text="@string/label_weight"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -132,7 +131,7 @@
                         android:id="@+id/abilitiesTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Habilidades: "
+                        android:text="@string/label_abilities"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -140,7 +139,7 @@
                         android:id="@+id/typesTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tipos: "
+                        android:text="@string/label_types"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -148,7 +147,7 @@
                         android:id="@+id/hpTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="HP: "
+                        android:text="@string/label_hp"
                         android:textColor="@color/black"
                         android:textSize="20sp"/>
 
@@ -156,7 +155,7 @@
                         android:id="@+id/attackTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Attack: "
+                        android:text="@string/label_attack"
                         android:textColor="@color/black"
                         android:textSize="20sp"/>
 
@@ -164,7 +163,7 @@
                         android:id="@+id/defenseTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Defense: "
+                        android:text="@string/label_defense"
                         android:textColor="@color/black"
                         android:textSize="20sp"/>
 

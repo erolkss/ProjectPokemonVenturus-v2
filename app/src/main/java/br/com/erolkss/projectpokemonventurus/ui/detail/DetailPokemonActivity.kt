@@ -49,23 +49,30 @@ class DetailPokemonActivity : AppCompatActivity() {
                 .into(binding.imagePokemon)
 
             binding.titleTxt.text = response.name.replaceFirstChar { it.uppercase() }
-            binding.idTxt.text = "Id: ${response.id}"
-            binding.heightTxt.text = "Altura: ${response.height / 10.0} m"
-            binding.weightTxt.text = "Peso: ${response.weight / 10.0} kg"
+            binding.idTxt.text = getString(R.string.detail_id_format, response.id)
+            binding.heightTxt.text = getString(
+                R.string.detail_height_format,
+                String.format("%.1f", response.height / 10.0)
+            )
+            binding.weightTxt.text = getString(
+                R.string.detail_weight_format,
+                String.format("%.1f", response.weight / 10.0)
+            )
+
 
             val abilities = response.abilities.joinToString(", ") { it.ability.name }
-            binding.abilitiesTxt.text = "Habilidades: $abilities"
+            binding.abilitiesTxt.text = getString(R.string.detail_abilities_format, abilities)
 
             val types = response.types.joinToString(", ") { it.type.name }
-            binding.typesTxt.text = "Tipos: $types"
+            binding.typesTxt.text = getString(R.string.detail_types_format, types)
 
             val hp = response.stats.find { it.stat.name == "hp" }?.base_stat ?: 0
             val attack = response.stats.find { it.stat.name == "attack" }?.base_stat ?: 0
             val defense = response.stats.find { it.stat.name == "defense" }?.base_stat ?: 0
 
-            binding.hpTxt.text = "HP: $hp"
-            binding.attackTxt.text = "Attack: $attack"
-            binding.defenseTxt.text = "Defense: $defense"
+            binding.hpTxt.text = getString(R.string.detail_hp_format, hp)
+            binding.attackTxt.text = getString(R.string.detail_attack_format, attack)
+            binding.defenseTxt.text = getString(R.string.detail_defense_format, defense)
         }
     }
 }

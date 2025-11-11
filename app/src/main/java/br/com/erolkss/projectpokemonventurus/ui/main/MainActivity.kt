@@ -2,6 +2,7 @@ package br.com.erolkss.projectpokemonventurus.ui.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.SearchView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -28,6 +29,10 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val types = listOf("All", "Fire", "Water", "Grass", "Electric")
+        val generations = listOf("All", "Gen I", "Gen II", "Gen III")
+
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = adapter
