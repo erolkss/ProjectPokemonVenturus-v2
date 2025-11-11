@@ -22,5 +22,6 @@
     <string name="detail_defense_format">Defesa: %1$d</string>
     <string name="description_image_showing_the_pokemon">Imagem mostrando o Pokémon</string>
     <string name="queryHint_search_for_the_pokemon_name">Procure pelo nome do Pokémon</string>
+    <string name="item_pokemon_generation">"Xº" Geração</string>
 
 </resources>
