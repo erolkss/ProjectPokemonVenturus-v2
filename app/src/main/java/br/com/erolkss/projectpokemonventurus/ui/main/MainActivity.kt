@@ -13,12 +13,13 @@ import br.com.erolkss.projectpokemonventurus.R
 import br.com.erolkss.projectpokemonventurus.data.api.ApiClient
 import br.com.erolkss.projectpokemonventurus.data.model.Result
 import br.com.erolkss.projectpokemonventurus.databinding.ActivityMainBinding
+import br.com.erolkss.projectpokemonventurus.ui.base.BaseActivity
 import br.com.erolkss.projectpokemonventurus.ui.detail.DetailPokemonActivity
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     private lateinit var binding: ActivityMainBinding
     private val adapter = PokemonAdapter()
     private var allPokemonList: List<Result> = emptyList()
@@ -52,6 +53,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun fetchPokemonList() {
         lifecycleScope.launch {
+            showLoading()
             val response = ApiClient.instance.getPokemonList()
             val results = response.results
 
@@ -75,6 +77,7 @@ class MainActivity : AppCompatActivity() {
             }.awaitAll()
             allPokemonList = updatedList
             adapter.submitList(updatedList)
+            hideLoading()
         }
     }
 
