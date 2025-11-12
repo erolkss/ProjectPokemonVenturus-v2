@@ -1,4 +1,4 @@
-# Pokémon App - Kotlin Android
+# Pokémon App - 2º Versão - Kotlin Android
 ## Lucas Lima
 
 📱 Projeto final do desafio de desenvolvimento Android em Kotlin, consumindo a API do Pokémon (PokeAPI v2).

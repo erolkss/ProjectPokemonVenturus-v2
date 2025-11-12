@@ -1,14 +1,17 @@
 package br.com.erolkss.projectpokemonventurus.ui.main
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.erolkss.projectpokemonventurus.R
 import br.com.erolkss.projectpokemonventurus.data.model.Result
 import br.com.erolkss.projectpokemonventurus.databinding.ItemPokemonBinding
 import com.bumptech.glide.Glide
 
-class PokemonAdapter : RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
+class PokemonAdapter : RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>() {
     private val list = mutableListOf<Result>()
     var onItemClick: ((Result) -> Unit)? = null
 
@@ -27,29 +30,18 @@ class PokemonAdapter : RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ViewHolder {
-        val binding =
-            ItemPokemonBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(binding)
+    ): PokemonViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_pokemon, parent, false)
+        return PokemonViewHolder(view)
     }
 
     override fun onBindViewHolder(
-        holder: ViewHolder,
+        holder: PokemonViewHolder,
         position: Int
     ) {
         val pokemon = list[position]
-        holder.binding.pokemonName.text = pokemon.name.replaceFirstChar { it.uppercase() }
-
-        // Extrai o ID do Pokémon pela URL
-        val id = pokemon.url.split("/").dropLast(1).last()
-        val imageUrl =
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$id.png"
-
-        // Carrega imagem usando Glide com cache automático
-        Glide.with(holder.itemView.context)
-            .load(imageUrl)
-            .placeholder(R.drawable.background_circle_loading)
-            .into(holder.binding.imagePokemon)
+        holder.bind(pokemon)
     }
 
     override fun getItemCount() = list.size
@@ -60,4 +52,25 @@ class PokemonAdapter : RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
+    inner class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val imagePokemon: ImageView = itemView.findViewById(R.id.imagePokemon)
+        private val pokemonName: TextView = itemView.findViewById(R.id.pokemonName)
+        private val generationPokemon: TextView = itemView.findViewById(R.id.generationPokemon)
+
+        fun bind(pokemon: Result) {
+            pokemonName.text = pokemon.name.replaceFirstChar { it.uppercase() }
+
+            generationPokemon.text = pokemon.generation ?: "Unknown Generation"
+
+            val id = pokemon.url.split("/").dropLast(1).last()
+
+            val imageUrl =
+                "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$id.png"
+            Glide.with(itemView.context)
+                .load(imageUrl)
+                .into(imagePokemon)
+
+            itemView.setOnClickListener { onItemClick?.invoke(pokemon) }
+        }
+    }
 }

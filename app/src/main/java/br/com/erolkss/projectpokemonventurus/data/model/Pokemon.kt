@@ -9,5 +9,6 @@ data class Pokemon(
 
 data class Result(
     val name: String,
-    val url: String
+    val url: String,
+    var generation: String? = null
 )

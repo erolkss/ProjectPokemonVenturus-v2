@@ -14,6 +14,8 @@ import br.com.erolkss.projectpokemonventurus.data.api.ApiClient
 import br.com.erolkss.projectpokemonventurus.data.model.Result
 import br.com.erolkss.projectpokemonventurus.databinding.ActivityMainBinding
 import br.com.erolkss.projectpokemonventurus.ui.detail.DetailPokemonActivity
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -51,8 +53,28 @@ class MainActivity : AppCompatActivity() {
     private fun fetchPokemonList() {
         lifecycleScope.launch {
             val response = ApiClient.instance.getPokemonList()
-            allPokemonList = response.results
-            adapter.submitList(allPokemonList)
+            val results = response.results
+
+            val updatedList = results.map { pokemon ->
+                async {
+                    val speciesResponse = ApiClient.instance.getPokemonSpecies(pokemon.name)
+                    val genName = when (speciesResponse.generation.name.lowercase()) {
+                        "generation-i" -> "1º Geração"
+                        "generation-ii" -> "2º Geração"
+                        "generation-iii" -> "3º Geração"
+                        "generation-iv" -> "4º Geração"
+                        "generation-v" -> "5º Geração"
+                        "generation-vi" -> "6º Geração"
+                        "generation-vii" -> "7º Geração"
+                        "generation-viii" -> "8º Geração"
+                        "generation-ix" -> "9º Geração"
+                        else -> "Geração Desconhecida"
+                    }
+                    pokemon.copy(generation = genName)
+                }
+            }.awaitAll()
+            allPokemonList = updatedList
+            adapter.submitList(updatedList)
         }
     }
 
