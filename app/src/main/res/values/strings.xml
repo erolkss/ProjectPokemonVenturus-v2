@@ -1,4 +1,27 @@
 <resources>
     <string name="app_name">ProjectPokemonVenturus</string>
     <string name="app_name_visualizer">Projeto Pokémon</string>
+    <string name="button_back">Voltar</string>
+    <string name="title_details">Detalhes</string>
+    <string name="label_id">ID:</string>
+    <string name="label_height">Altura:</string>
+    <string name="label_weight">Peso:</string>
+    <string name="label_abilities">Habilidades:</string>
+    <string name="label_types">Tipos:</string>
+    <string name="label_hp">HP:</string>
+    <string name="label_name">Nome Pokémon</string>
+    <string name="label_attack">Ataque:</string>
+    <string name="label_defense">Deefesa:</string>
+    <string name="detail_id_format">ID: %1$d</string>
+    <string name="detail_height_format">Altura: %1$s m</string>
+    <string name="detail_weight_format">Peso: %1$s kg</string>
+    <string name="detail_abilities_format">Habilidades: %1$s</string>
+    <string name="detail_types_format">Tipos: %1$s</string>
+    <string name="detail_hp_format">HP: %1$d</string>
+    <string name="detail_attack_format">Ataque: %1$d</string>
+    <string name="detail_defense_format">Defesa: %1$d</string>
+    <string name="description_image_showing_the_pokemon">Imagem mostrando o Pokémon</string>
+    <string name="queryHint_search_for_the_pokemon_name">Procure pelo nome do Pokémon</string>
+    <string name="item_pokemon_generation">"Xº" Geração</string>
+
 </resources>
